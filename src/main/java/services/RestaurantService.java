@@ -16,10 +16,4 @@ import java.util.List;
 @Transactional
 public class RestaurantService {
 
-
-    private RestaurantDAO restaurantDAO = new RestaurantDAO();
-
-    public List<Restaurant> getAllRestaurants() {
-        return restaurantDAO.getAllRestaurants();
-    }
 }

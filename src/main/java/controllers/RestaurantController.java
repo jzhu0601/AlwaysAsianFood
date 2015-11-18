@@ -20,11 +20,6 @@ public class RestaurantController {
 
     private RestaurantService restaurantService = new RestaurantService();
 
-    @RequestMapping(value = "/restaurants", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Restaurant> getALLRestaurants() {
-        return restaurantService.getAllRestaurants();
-    }
 
     @RequestMapping(value = "/restaurant", method = RequestMethod.GET)
     @ResponseBody
