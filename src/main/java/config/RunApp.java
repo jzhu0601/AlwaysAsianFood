@@ -17,12 +17,12 @@ public class RunApp {
         RestaurantDAO restaurantDAO = context.getBean(RestaurantDAO.class);
 
         Restaurant restaurant = new Restaurant();
-        restaurant.setRestaurantId(1);
-        restaurant.setRestaurantName("Less's Asian Grill");
-        restaurant.setPhoneNum("614-876-9786");
-        restaurant.setBusinessHours("Mon-Fri 11-5");
-        restaurant.setRestaurantAddress("123 Eat lots Ave, Columbus,OH 43212");
-        restaurant.setWebsite("www.leesgrill.com");
+        restaurant.setRestaurantId(2);
+        restaurant.setRestaurantName("dfLesfdss's Asian Grill");
+        restaurant.setPhoneNum("614-8sdfdf76-9786");
+        restaurant.setBusinessHours("Monsfdsf-Fri 11-5");
+        restaurant.setRestaurantAddress("123efe Eat lots Ave, Columbus,OH 43212");
+        restaurant.setWebsite("www.leefefsgrill.com");
 
         restaurantDAO.save(restaurant);
         System.out.println(restaurantDAO.count());
