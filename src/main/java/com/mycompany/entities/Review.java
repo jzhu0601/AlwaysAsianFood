@@ -19,13 +19,13 @@ public class Review implements Serializable {
     @Column(name = "review_content")
     private String reviewContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "customer_id")
+//    private Customer customer;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "restaurant_id")
+//    private Restaurant restaurant;
 
 
     public String getReviewContent() {

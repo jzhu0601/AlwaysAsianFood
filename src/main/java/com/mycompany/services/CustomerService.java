@@ -47,7 +47,7 @@ public class CustomerService {
         customerToUpdate.setCustomerLastName(customer.getCustomerLastName());
         customerToUpdate.setEmail(customer.getUsername());
         customerToUpdate.setUsername(customer.getUsername());
-        customerToUpdate.setReviews(customer.getReviews());
+        //customerToUpdate.setReviews(customer.getReviews());
         return customerDAO.save(customerToUpdate);
 
     }

@@ -13,8 +13,8 @@ import java.util.Set;
 @Table(name = "restaurants")
 public class Restaurant implements Serializable {
 
-    @OneToMany(mappedBy = "restaurant")
-    private Set<Restaurant> restaurants = new HashSet<>();
+//    @OneToMany(mappedBy = "restaurant")
+//    private Set<Restaurant> restaurants = new HashSet<>();
 
     Restaurant() {
 
@@ -99,11 +99,11 @@ public class Restaurant implements Serializable {
                 '}';
     }
 
-    public Set<Restaurant> getRestaurants() {
-        return restaurants;
-    }
-
-    public void setRestaurants(Set<Restaurant> restaurants) {
-        this.restaurants = restaurants;
-    }
+//    public Set<Restaurant> getRestaurants() {
+//        return restaurants;
+//    }
+//
+//    public void setRestaurants(Set<Restaurant> restaurants) {
+//        this.restaurants = restaurants;
+//    }
 }
