@@ -1,6 +1,6 @@
 package com.mycompany.services;
 
-import com.mycompany.repositories.RestaurantDAO;
+import com.mycompany.Repositories.RestaurantRepository;
 import com.mycompany.entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Collection;
 @Transactional
 public class RestaurantService {
     @Autowired
-    private RestaurantDAO restaurantDAO;
+    private RestaurantRepository restaurantDAO;
 
     public Restaurant saveResaurant(Restaurant restaurant) {
         return restaurantDAO.save(restaurant);

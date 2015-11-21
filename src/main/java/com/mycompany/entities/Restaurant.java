@@ -2,6 +2,8 @@ package com.mycompany.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by jzhu on 11/17/2015.
@@ -10,6 +12,13 @@ import java.io.Serializable;
 @Entity
 @Table(name = "restaurants")
 public class Restaurant implements Serializable {
+
+    @OneToMany(mappedBy = "restaurant")
+    private Set<Restaurant> restaurants = new HashSet<>();
+
+    Restaurant() {
+
+    }
 
     @Id
     @Column(name = "restaurant_id")
@@ -88,5 +97,13 @@ public class Restaurant implements Serializable {
                 ", website='" + website + '\'' +
                 ", businessHours='" + businessHours + '\'' +
                 '}';
+    }
+
+    public Set<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(Set<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 }
