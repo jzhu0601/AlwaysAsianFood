@@ -13,8 +13,19 @@ import java.util.Set;
 @Table(name = "restaurants")
 public class Restaurant implements Serializable {
 
-//    @OneToMany(mappedBy = "restaurant")
-//    private Set<Restaurant> restaurants = new HashSet<>();
+    @OneToMany(mappedBy = "restaurant")
+    private Set<Review> reviews = new HashSet<>();
+
+    @OneToMany(mappedBy="restaurant")
+    private Set<ApiLink> apiLinks;
+
+    public Set<ApiLink> getApiLinks() {
+        return apiLinks;
+    }
+
+    public void setApiLinks(Set<ApiLink> apiLinks) {
+        this.apiLinks = apiLinks;
+    }
 
     Restaurant() {
 
@@ -87,6 +98,14 @@ public class Restaurant implements Serializable {
         this.businessHours = businessHours;
     }
 
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -99,11 +118,5 @@ public class Restaurant implements Serializable {
                 '}';
     }
 
-//    public Set<Restaurant> getRestaurants() {
-//        return restaurants;
-//    }
-//
-//    public void setRestaurants(Set<Restaurant> restaurants) {
-//        this.restaurants = restaurants;
-//    }
+
 }

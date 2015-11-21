@@ -12,9 +12,9 @@ import java.util.Set;
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
-//    @OneToMany(mappedBy = "customer")
-//    private Set<Review> reviews = new HashSet<>();
 
+    @OneToMany(mappedBy = "customer")
+    private Set<Review> reviews = new HashSet<>();
 
     @Id
     @Column(name = "customer_id")
@@ -83,13 +83,13 @@ public class Customer implements Serializable {
                 '}';
     }
 
-//    public Set<Review> getReviews() {
-//        return reviews;
-//    }
-//
-//    public void setReviews(Set<Review> reviews) {
-//        this.reviews = reviews;
-//    }
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     Customer() {   //jpa only
 

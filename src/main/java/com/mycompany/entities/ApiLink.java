@@ -20,6 +20,17 @@ public class ApiLink implements Serializable {
     @Column(name = "service_name")
     private String serviceName;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Restaurant restaurant;
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     public Integer getApiId() {
         return apiId;
     }
