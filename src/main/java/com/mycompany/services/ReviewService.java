@@ -44,7 +44,6 @@ public class ReviewService {
 
         reviewToUpdate.setReviewContent(review.getReviewContent());
         reviewToUpdate.setReviewId(review.getReviewId());
-        ;
         return reviewDAO.save(reviewToUpdate);
 
     }

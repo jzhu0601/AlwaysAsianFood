@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by jzhu on 11/20/2015.
  */
 @SpringBootApplication
-@ComponentScan("com.mycompany")
+@ComponentScan(basePackages = {"com.mycompany"})
 public class Application {
 
     public static void main(String[] args) {
