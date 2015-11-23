@@ -22,6 +22,11 @@
                 controller: 'addRestaurantCtrl'
             })
 
+            .when('/restaurantList/editRestaurant/:id',{
+                templateUrl:'/resources/pages/editRestaurant.html',
+                controller:'editRestaurantCtrl'
+            })
+
     });//end config
 
 })();//end IFFE

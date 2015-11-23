@@ -19,7 +19,10 @@
                 <td>{{restaurant.website}}</td>
                 <td>{{restaurant.businessHours}}</td>
                 <td>
-                    <a class="btn btn-primary">Edit</a>
+                    <a class="btn btn-primary">Rate</a>
+                </td>
+                <td>
+                    <a ng-href="/#/restaurantList/editRestaurant/{{restaurant.restaurantId}}" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
             </tbody>

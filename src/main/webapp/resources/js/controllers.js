@@ -42,8 +42,35 @@
                 businessHours: $scope.businessHours
             }; //end data
             var res = $http.post('/api/restaurants', data);
-
         }//end submit function
     } //end AddRestaurantCtrl
 
-})();//end IFFE end homeCtrl
+    angular
+        .module("asianFoodApp")
+        .controller("editRestaurantCtrl", EditRestaurantCtrl);
+
+    function EditRestaurantCtrl($scope, $routeParams, $http) {
+        var restaurantId = $routeParams.id;
+        var url = "http://localhost:8080/api/restaurants/" + restaurantId;
+
+        $http.get(url).success(function (data) {
+            $scope.restaurant = data;
+        });
+
+        $scope.submit = function () {
+            var data = {
+                restaurantId: restaurantId,
+                restaurantName: $scope.restaurantName,
+                restaurantAddress: $scope.restaurantAddress,
+                phoneNum: $scope.phoneNum,
+                website: $scope.website,
+                businessHours: $scope.businessHours
+            }; //end data
+            var res = $http.put('/api/restaurants/'+restaurantId, data);
+        }//end submit function
+
+
+    } //end EditRestaurantCtrl
+
+
+})();//end IFFE

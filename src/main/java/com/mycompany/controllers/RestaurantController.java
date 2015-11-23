@@ -1,6 +1,5 @@
 package com.mycompany.controllers;
 
-import com.mycompany.entities.Customer;
 import com.mycompany.entities.Restaurant;
 import com.mycompany.services.CustomerService;
 import com.mycompany.services.RestaurantService;
