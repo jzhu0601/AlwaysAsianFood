@@ -8,12 +8,18 @@
         .controller("homeCtrl", HomeCtrl);
 
     function HomeCtrl($scope, $http) {
-        $http.get('http://localhost:8080/api/restaurants').
-        success(function(data) {
-            $scope.restaurants = data;
-        });
+
     } //end HomeCtrl
 
+    angular
+        .module("asianFoodApp")
+        .controller("restaurantCtrl", RestaurantCtrl);
 
+    function RestaurantCtrl($scope,$http) {
+        $http.get('http://localhost:8080/api/restaurants').
+        success(function (data) {
+            $scope.restaurants = data;
+        });
+    }//end restaurantCtrl
 
 })();//end IFFE end homeCtrl
