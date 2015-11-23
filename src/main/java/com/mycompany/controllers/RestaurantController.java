@@ -30,15 +30,6 @@ public class RestaurantController {
         return new ResponseEntity<Collection<Restaurant>>(restaurants, HttpStatus.OK);
     }
 
-
-    @RequestMapping(value = "/api/customers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Collection<Customer>> getCustomers() {
-
-        Collection<Customer> customers = customerService.findAll();
-
-        return new ResponseEntity<Collection<Customer>>(customers, HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> getRestaurant(@PathVariable("id") Integer restaurantId) {
 
