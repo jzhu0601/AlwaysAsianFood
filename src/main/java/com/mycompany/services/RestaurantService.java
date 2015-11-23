@@ -1,6 +1,6 @@
 package com.mycompany.services;
 
-import com.mycompany.repositories.RestaurantRepository;
+import com.mycompany.Repositories.RestaurantRepository;
 import com.mycompany.entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.mycompany.repositories;
+package com.mycompany.Repositories;
 
 import com.mycompany.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
