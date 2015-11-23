@@ -15,7 +15,12 @@
             .when('/restaurantList', {
                 templateUrl: '/resources/pages/restaurantList.html',
                 controller: 'restaurantCtrl'
-            });
+            })
+
+            .when('/addRestaurant', {
+                templateUrl: '/resources/pages/addRestaurant.html',
+                controller: 'addRestaurantCtrl'
+            })
 
     });//end config
 

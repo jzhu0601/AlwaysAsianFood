@@ -1,0 +1,67 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">{{title}}</div>
+
+    <div class="panel-body">
+        <div class="wizard">
+            <form class="form-horizontal" name="restaurantForm">
+                <fieldset>
+                    <legend>Adding Restaurant</legend>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputRestaurantName">Name</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" id="inputRestaurantName" type="text"
+                                   placeholder="Restaurant Name..."
+                                   ng-model="restaurantName"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputRestaurantAddress">Address</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" placeholder="Restaurant Address..." id="inputRestaurantAddress"
+                                   ng-model="restaurantAddress"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputPhoneNum">Phone</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" id="inputPhoneNum" type="text"
+                                   ng-model="phoneNum" placeholder="Phone Number..."/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputWebsite">Website</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" id="inputWebsite" type="text"
+                                   ng-model="website" placeholder="Website..."/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputBusinessHours">Business Hours</label>
+
+                        <div class="col-md-4">
+                            <input class="form-control" id="inputBusinessHours" type="text"
+                                   ng-model="businessHours" placeholder="Business Hours..."/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span><button class="btn btn-primary" style="width:80px;margin-right:10px" ng-click="submit()">Save
+                            </button></span>
+                            <span><button class="btn btn-default" style="width:70px" ng-click="cancel()">Cancel</button></span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

@@ -33,6 +33,7 @@ public class Restaurant implements Serializable {
 
     @Id
     @Column(name = "restaurant_id")
+    @GeneratedValue
     private Integer restaurantId;
 
     @Column(name = "restaurant_name")
