@@ -1,5 +1,7 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ import java.util.Set;
 public class Customer implements Serializable {
 
     @OneToMany(mappedBy = "customer")
+    @JsonManagedReference
     private Set<Review> reviews = new HashSet<>();
 
     @Id

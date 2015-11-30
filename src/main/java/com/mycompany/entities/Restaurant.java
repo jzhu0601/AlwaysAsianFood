@@ -1,5 +1,7 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,9 +16,11 @@ import java.util.Set;
 public class Restaurant implements Serializable {
 
     @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference
     private Set<Review> reviews = new HashSet<>();
 
     @OneToMany(mappedBy="restaurant")
+    @JsonManagedReference
     private Set<ApiLink> apiLinks;
 
     public Set<ApiLink> getApiLinks() {

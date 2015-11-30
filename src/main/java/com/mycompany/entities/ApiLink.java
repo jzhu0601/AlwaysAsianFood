@@ -1,5 +1,7 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -21,6 +23,7 @@ public class ApiLink implements Serializable {
     private String serviceName;
 
     @ManyToOne(fetch=FetchType.LAZY)
+    @JsonBackReference
     private Restaurant restaurant;
 
     public Restaurant getRestaurant() {

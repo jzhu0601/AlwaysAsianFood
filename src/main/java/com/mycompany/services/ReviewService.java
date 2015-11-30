@@ -1,6 +1,7 @@
 package com.mycompany.services;
 
 import com.mycompany.Repositories.ReviewRepository;
+import com.mycompany.entities.Restaurant;
 import com.mycompany.entities.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,9 @@ public class ReviewService {
 
     public void delete(Integer id) {
         reviewDAO.delete(id);
+    }
+
+    public Restaurant findByRestaurant(Integer restaurantId){
+        return  null;
     }
 }
