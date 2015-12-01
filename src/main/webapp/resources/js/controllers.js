@@ -66,9 +66,25 @@
                 website: $scope.restaurant.website,
                 businessHours: $scope.restaurant.businessHours
             }; //end dataRec
-            var res = $http.put('/api/restaurants/'+restaurantId, dataRec);
+            var res = $http.put('/api/restaurants/' + restaurantId, dataRec);
         }//end submit function
     } //end EditRestaurantCtrl
 
+    angular
+        .module("asianFoodApp")
+        .controller("rateRestaurantCtrl", RateRestaurantCtrl);
+
+    function RateRestaurantCtrl($scope,$http,$routeParams) {
+        var restaurantId = $routeParams.id;
+        $scope.rating="";
+        $scope.reviewContent="";
+        $scope.submit = function(){
+            var dataRec={
+                rating:$scope.rating,
+                reviewContent:$scope.reviewContent
+            };//end dataRec
+            var res=$http.post();
+        } //end submit
+    }//end RateRestaurantCtrl
 
 })();//end IFFE

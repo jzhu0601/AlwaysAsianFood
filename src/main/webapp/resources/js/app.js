@@ -22,9 +22,14 @@
                 controller: 'addRestaurantCtrl'
             })
 
-            .when('/restaurantList/editRestaurant/:id',{
-                templateUrl:'/resources/pages/editRestaurant.html',
-                controller:'editRestaurantCtrl'
+            .when('/restaurantList/editRestaurant/:id', {
+                templateUrl: '/resources/pages/editRestaurant.html',
+                controller: 'editRestaurantCtrl'
+            })
+
+            .when('/restaurant/rate/:id', {
+                templateUrl: '/resources/pages/rateRestaurant.html',
+                controller: 'rateRestaurantCtrl'
             })
 
     });//end config
