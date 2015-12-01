@@ -18,10 +18,6 @@ public class RestaurantService {
     @Autowired
     private RestaurantRepository restaurantDAO;
 
-    public Restaurant saveResaurant(Restaurant restaurant) {
-        return restaurantDAO.save(restaurant);
-    }
-
     public Collection<Restaurant> findAll() {
         return restaurantDAO.findAll();
     }
@@ -31,6 +27,7 @@ public class RestaurantService {
     }
 
     public Restaurant create(Restaurant restaurant) {
+
         return restaurantDAO.save(restaurant);
     }
 

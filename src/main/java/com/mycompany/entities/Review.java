@@ -73,11 +73,14 @@ public class Review implements Serializable {
 //        this.reviewStar = reviewStar;
 //    }
 
+
     @Override
     public String toString() {
         return "Review{" +
                 "reviewId=" + reviewId +
                 ", reviewContent='" + reviewContent + '\'' +
+                ", customer=" + customer +
+                ", restaurant=" + restaurant +
                 '}';
     }
 }

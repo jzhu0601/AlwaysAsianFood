@@ -1,7 +1,6 @@
 package com.mycompany.controllers;
 
 import com.mycompany.entities.Restaurant;
-import com.mycompany.services.CustomerService;
 import com.mycompany.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
-    private CustomerService customerService;
 
     @RequestMapping(value = "/api/restaurants", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Restaurant>> getRestaurants() {
