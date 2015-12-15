@@ -19,14 +19,11 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
-    private CustomerService customerService;
 
     @RequestMapping(value = "/api/restaurants", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Restaurant>> getRestaurants() {
-
         Collection<Restaurant> restaurants = restaurantService.findAll();
-
-        return new ResponseEntity<Collection<Restaurant>>(restaurants, HttpStatus.OK);
+        return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,31 +31,28 @@ public class RestaurantController {
 
         Restaurant restaurant = restaurantService.findOne(restaurantId);
 
-        return new ResponseEntity<Restaurant>(restaurant, HttpStatus.OK);
+        return new ResponseEntity<>(restaurant, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/restaurants", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
         Restaurant restaurant1 = restaurantService.create(restaurant);
-        return new ResponseEntity<Restaurant>(restaurant1, HttpStatus.CREATED);
+        return new ResponseEntity<>(restaurant1, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> updateRestaurant(
             @RequestBody Restaurant restaurant) {
-
         Restaurant restaurant1 = restaurantService.update(restaurant);
-        if (restaurant1 == null) {
-            return new ResponseEntity<Restaurant>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<Restaurant>(restaurant1, HttpStatus.OK);
+        if (restaurant1 == null)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(restaurant1, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable("id") Integer id) {
         restaurantService.delete(id);
-        return new ResponseEntity<Restaurant>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
+    
 }

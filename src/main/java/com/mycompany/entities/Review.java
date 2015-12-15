@@ -6,7 +6,6 @@ import java.io.Serializable;
 /**
  * Created by jzhu on 11/17/2015.
  */
-
 @Entity
 @Table(name = "reviews")
 public class Review implements Serializable {

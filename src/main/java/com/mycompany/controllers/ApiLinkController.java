@@ -41,7 +41,9 @@ public class ApiLinkController {
 
     @RequestMapping(value = "/api/apiLinks", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiLink> createApiLink(@RequestBody ApiLink apiLink) {
+
         ApiLink apiLink1 = apiLinkService.create(apiLink);
+
         return new ResponseEntity<ApiLink>(apiLink1, HttpStatus.CREATED);
     }
 
