@@ -1,7 +1,6 @@
 package com.mycompany.controllers;
 
 import com.mycompany.entities.Restaurant;
-import com.mycompany.services.CustomerService;
 import com.mycompany.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -58,19 +58,33 @@
         });
 
         $scope.submit = function () {
-            var data = {
+            var dataRec = {
                 restaurantId: restaurantId,
-                restaurantName: $scope.restaurantName,
-                restaurantAddress: $scope.restaurantAddress,
-                phoneNum: $scope.phoneNum,
-                website: $scope.website,
-                businessHours: $scope.businessHours
-            }; //end data
-            var res = $http.put('/api/restaurants/'+restaurantId, data);
+                restaurantName: $scope.restaurant.restaurantName,
+                restaurantAddress: $scope.restaurant.restaurantAddress,
+                phoneNum: $scope.restaurant.phoneNum,
+                website: $scope.restaurant.website,
+                businessHours: $scope.restaurant.businessHours
+            }; //end dataRec
+            var res = $http.put('/api/restaurants/' + restaurantId, dataRec);
         }//end submit function
-
-
     } //end EditRestaurantCtrl
 
+    angular
+        .module("asianFoodApp")
+        .controller("rateRestaurantCtrl", RateRestaurantCtrl);
+
+    function RateRestaurantCtrl($scope,$http,$routeParams) {
+        var restaurantId = $routeParams.id;
+        $scope.rating="";
+        $scope.reviewContent="";
+        $scope.submit = function(){
+            var dataRec={
+                rating:$scope.rating,
+                reviewContent:$scope.reviewContent
+            };//end dataRec
+            var res=$http.post();
+        } //end submit
+    }//end RateRestaurantCtrl
 
 })();//end IFFE

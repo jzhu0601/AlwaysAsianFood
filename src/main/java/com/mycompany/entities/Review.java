@@ -1,5 +1,7 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,16 +14,22 @@ public class Review implements Serializable {
 
 
     @Id
+    @GeneratedValue
     @Column(name = "review_id")
     private Integer reviewId;
 
     @Column(name = "review_content")
     private String reviewContent;
 
+//    @Column(name = "review_star")
+//    private Integer reviewStar;
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Restaurant restaurant;
 
     public Customer getCustomer() {
@@ -56,11 +64,22 @@ public class Review implements Serializable {
         this.reviewId = reviewId;
     }
 
+//    public Integer getReviewStar() {
+//        return reviewStar;
+//    }
+//
+//    public void setReviewStar(Integer reviewStar) {
+//        this.reviewStar = reviewStar;
+//    }
+
+
     @Override
     public String toString() {
         return "Review{" +
                 "reviewId=" + reviewId +
                 ", reviewContent='" + reviewContent + '\'' +
+                ", customer=" + customer +
+                ", restaurant=" + restaurant +
                 '}';
     }
 }

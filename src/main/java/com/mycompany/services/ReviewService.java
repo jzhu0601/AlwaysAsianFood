@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.NoResultException;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by jzhu on 11/17/2015.
@@ -18,37 +18,28 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewDAO;
 
-    public Review saveReview(Review review) {
-        return reviewDAO.save(review);
+
+    public List<Review> getReviewsBaseOnRestaurantId(Integer id){
+        return reviewDAO.queryByRestaurant(id);
+    }
+
+    public List<Review> getReviewsBasedOnCustomerId(Integer id){
+        return reviewDAO.queryByCustomer(id);
     }
 
     public Collection<Review> findAll() {
         return reviewDAO.findAll();
     }
 
-    public Review findOne(Integer reviewId) {
-        return reviewDAO.findOne(reviewId);
-    }
+    public Review create(Review review, Integer cusId, Integer restId) {
+        Review reviewToCreate = new Review();
 
-    public Review create(Review review) {
         return reviewDAO.save(review);
     }
 
-    public Review update(Review review) {
 
-        Review reviewToUpdate = findOne(review.getReviewId());
-
-        if (reviewToUpdate == null) {
-            throw new NoResultException("Requested review not found.");
-        }
-
-        reviewToUpdate.setReviewContent(review.getReviewContent());
-        reviewToUpdate.setReviewId(review.getReviewId());
-        return reviewDAO.save(reviewToUpdate);
-
+    public Collection<Review> getReviewsBasedOnCustomerAndRestaurantId(Integer cusId, Integer restId) {
+        return reviewDAO.queryByCustomerAndRestaurant(cusId,restId);
     }
 
-    public void delete(Integer id) {
-        reviewDAO.delete(id);
-    }
 }
