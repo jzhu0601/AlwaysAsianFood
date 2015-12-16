@@ -8,7 +8,21 @@
         .controller("homeCtrl", HomeCtrl);
 
     function HomeCtrl($scope, $http) {
-
+        $scope.boolValue = true;
+        $scope.term = "burger king";
+        $scope.location = "columbus";
+        $scope.submitSearch = function () {
+            $scope.boolValue = false;
+            var data = {
+                term: $scope.term,
+                location: $scope.location
+            }; //end data
+            var res = $http.post('/api/yelp/searchRestaurant', data);
+            $http.get('/api/yelp/searchRestaurantResult').
+            success(function (data) {
+                $scope.response = data;
+            });
+        }//end submit function
     } //end HomeCtrl
 
     angular
@@ -16,7 +30,7 @@
         .controller("restaurantCtrl", RestaurantCtrl);
 
     function RestaurantCtrl($scope, $http) {
-        $http.get('http://localhost:8080/api/restaurants').
+        $http.get('/api/restaurants').
         success(function (data) {
             $scope.restaurants = data;
         });
@@ -49,9 +63,9 @@
         .module("asianFoodApp")
         .controller("editRestaurantCtrl", EditRestaurantCtrl);
 
-    function EditRestaurantCtrl($scope, $routeParams, $http,$location) {
+    function EditRestaurantCtrl($scope, $routeParams, $http, $location) {
         var restaurantId = $routeParams.id;
-        var url = "http://localhost:8080/api/restaurants/" + restaurantId;
+        var url = "/api/restaurants/" + restaurantId;
 
         $http.get(url).success(function (data) {
             $scope.restaurant = data;
@@ -68,7 +82,7 @@
             }; //end dataRec
             var res = $http.put('/api/restaurants/' + restaurantId, dataRec);
         }//end submit function
-        $scope.cancel = function(path){
+        $scope.cancel = function (path) {
             $location.path('/restaurantList');
         }//end cancel
     } //end EditRestaurantCtrl
@@ -77,19 +91,19 @@
         .module("asianFoodApp")
         .controller("rateRestaurantCtrl", RateRestaurantCtrl);
 
-    function RateRestaurantCtrl($scope,$http,$routeParams,$location) {
+    function RateRestaurantCtrl($scope, $http, $routeParams, $location) {
         var restaurantId = $routeParams.id;
-        $scope.rating="";
-        $scope.reviewContent="";
-        $scope.submit = function(){
-            var dataRec={
-                reviewStar:$scope.rating,
-                reviewContent:$scope.reviewContent,
-                restaurantId:restaurantId
+        $scope.rating = "";
+        $scope.reviewContent = "";
+        $scope.submit = function () {
+            var dataRec = {
+                reviewStar: $scope.rating,
+                reviewContent: $scope.reviewContent,
+                restaurantId: restaurantId
             };//end dataRec
-            var res=$http.post('api/reviews/'+restaurantId,dataRec);
+            var res = $http.post('api/reviews/' + restaurantId, dataRec);
         } //end submit
-        $scope.cancel = function(path){
+        $scope.cancel = function (path) {
             $location.path('/restaurantList');
         }//end cancel
     }//end RateRestaurantCtrl
