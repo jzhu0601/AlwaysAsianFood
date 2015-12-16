@@ -21,16 +21,28 @@ public class Review implements Serializable {
     @Column(name = "review_content")
     private String reviewContent;
 
-//    @Column(name = "review_star")
-//    private Integer reviewStar;
+    @Column(name = "review_star")
+    private String reviewStar;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value="customer")
+    @JsonBackReference(value = "customer")
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value="review")
+    @JsonBackReference(value = "review")
     private Restaurant restaurant;
+
+    @Transient
+    private Integer restaurantId;
+
+    public Integer getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Integer restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
 
     public Customer getCustomer() {
         return customer;
@@ -64,22 +76,13 @@ public class Review implements Serializable {
         this.reviewId = reviewId;
     }
 
-//    public Integer getReviewStar() {
-//        return reviewStar;
-//    }
-//
-//    public void setReviewStar(Integer reviewStar) {
-//        this.reviewStar = reviewStar;
-//    }
-
-
-    @Override
-    public String toString() {
-        return "Review{" +
-                "reviewId=" + reviewId +
-                ", reviewContent='" + reviewContent + '\'' +
-                ", customer=" + customer +
-                ", restaurant=" + restaurant +
-                '}';
+    public String getReviewStar() {
+        return reviewStar;
     }
+
+    public void setReviewStar(String reviewStar) {
+        this.reviewStar = reviewStar;
+    }
+
+
 }

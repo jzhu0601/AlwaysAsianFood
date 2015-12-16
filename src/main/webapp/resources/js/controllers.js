@@ -49,7 +49,7 @@
         .module("asianFoodApp")
         .controller("editRestaurantCtrl", EditRestaurantCtrl);
 
-    function EditRestaurantCtrl($scope, $routeParams, $http) {
+    function EditRestaurantCtrl($scope, $routeParams, $http,$location) {
         var restaurantId = $routeParams.id;
         var url = "http://localhost:8080/api/restaurants/" + restaurantId;
 
@@ -68,23 +68,30 @@
             }; //end dataRec
             var res = $http.put('/api/restaurants/' + restaurantId, dataRec);
         }//end submit function
+        $scope.cancel = function(path){
+            $location.path('/restaurantList');
+        }//end cancel
     } //end EditRestaurantCtrl
 
     angular
         .module("asianFoodApp")
         .controller("rateRestaurantCtrl", RateRestaurantCtrl);
 
-    function RateRestaurantCtrl($scope,$http,$routeParams) {
+    function RateRestaurantCtrl($scope,$http,$routeParams,$location) {
         var restaurantId = $routeParams.id;
         $scope.rating="";
         $scope.reviewContent="";
         $scope.submit = function(){
             var dataRec={
-                rating:$scope.rating,
-                reviewContent:$scope.reviewContent
+                reviewStar:$scope.rating,
+                reviewContent:$scope.reviewContent,
+                restaurantId:restaurantId
             };//end dataRec
-            var res=$http.post();
+            var res=$http.post('api/reviews/'+restaurantId,dataRec);
         } //end submit
+        $scope.cancel = function(path){
+            $location.path('/restaurantList');
+        }//end cancel
     }//end RateRestaurantCtrl
 
 })();//end IFFE

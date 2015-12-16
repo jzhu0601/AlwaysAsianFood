@@ -45,7 +45,6 @@ public class ApiLinkController {
         return new ResponseEntity<>(apiLink1, HttpStatus.CREATED);
     }
 
-
     @RequestMapping(value = "/api/apiLinks/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<ApiLink> deleteApiLink(@PathVariable("id") Integer id) {
         apiLinkService.delete(id);
