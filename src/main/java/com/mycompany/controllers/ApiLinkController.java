@@ -28,7 +28,7 @@ public class ApiLinkController {
 
         Collection<ApiLink> apiLinks = apiLinkService.findAll();
 
-        return new ResponseEntity<Collection<ApiLink>>(apiLinks, HttpStatus.OK);
+        return new ResponseEntity<>(apiLinks, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/apiLinks/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,22 +36,20 @@ public class ApiLinkController {
 
         ApiLink review = apiLinkService.findOne(apiLinkId);
 
-        return new ResponseEntity<ApiLink>(review, HttpStatus.OK);
+        return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/apiLinks", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ApiLink> createApiLink(@RequestBody ApiLink apiLink) {
-
         ApiLink apiLink1 = apiLinkService.create(apiLink);
-
-        return new ResponseEntity<ApiLink>(apiLink1, HttpStatus.CREATED);
+        return new ResponseEntity<>(apiLink1, HttpStatus.CREATED);
     }
 
 
     @RequestMapping(value = "/api/apiLinks/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<ApiLink> deleteApiLink(@PathVariable("id") Integer id) {
         apiLinkService.delete(id);
-        return new ResponseEntity<ApiLink>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 

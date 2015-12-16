@@ -24,7 +24,7 @@ public class ApiLink implements Serializable {
     private String serviceName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value="api")
     private Restaurant restaurant;
 
     @Transient

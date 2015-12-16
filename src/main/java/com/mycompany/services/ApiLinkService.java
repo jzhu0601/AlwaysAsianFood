@@ -18,7 +18,6 @@ import java.util.Collection;
  */
 @Service
 @Transactional
-
 public class ApiLinkService {
     @Autowired
     private ApiLinkRepository apiLinkDAO;

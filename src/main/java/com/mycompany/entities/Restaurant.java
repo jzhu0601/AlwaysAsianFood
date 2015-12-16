@@ -37,14 +37,18 @@ public class Restaurant implements Serializable {
     private String businessHours;
 
     @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference(value="review")
     @JsonIgnore
-    @JsonManagedReference
     private Set<Review> reviews = new HashSet<>();
 
     @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference(value="api")
     @JsonIgnore
-    @JsonManagedReference
     private Set<ApiLink> apiLinks = new HashSet<>();
+
+    public Restaurant(){
+
+    }
 
     public Integer getRestaurantId() {
         return restaurantId;

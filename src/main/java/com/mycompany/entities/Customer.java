@@ -16,7 +16,7 @@ import java.util.Set;
 public class Customer implements Serializable {
 
     @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
+    @JsonManagedReference(value="customer")
     private Set<Review> reviews = new HashSet<>();
 
     @Id

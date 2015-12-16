@@ -25,11 +25,11 @@ public class Review implements Serializable {
 //    private Integer reviewStar;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value="customer")
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value="review")
     private Restaurant restaurant;
 
     public Customer getCustomer() {
