@@ -1,5 +1,8 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -13,26 +16,9 @@ import java.util.Set;
 @Table(name = "restaurants")
 public class Restaurant implements Serializable {
 
-    @OneToMany(mappedBy = "restaurant")
-    private Set<Review> reviews = new HashSet<>();
-
-    @OneToMany(mappedBy="restaurant")
-    private Set<ApiLink> apiLinks;
-
-    public Set<ApiLink> getApiLinks() {
-        return apiLinks;
-    }
-
-    public void setApiLinks(Set<ApiLink> apiLinks) {
-        this.apiLinks = apiLinks;
-    }
-
-    Restaurant() {
-
-    }
-
     @Id
     @Column(name = "restaurant_id")
+    @GeneratedValue
     private Integer restaurantId;
 
     @Column(name = "restaurant_name")
@@ -49,6 +35,20 @@ public class Restaurant implements Serializable {
 
     @Column(name = "business_hour")
     private String businessHours;
+
+    @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference(value="review")
+    @JsonIgnore
+    private Set<Review> reviews = new HashSet<>();
+
+    @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference(value="api")
+    @JsonIgnore
+    private Set<ApiLink> apiLinks = new HashSet<>();
+
+    public Restaurant(){
+
+    }
 
     public Integer getRestaurantId() {
         return restaurantId;
@@ -106,17 +106,12 @@ public class Restaurant implements Serializable {
         this.reviews = reviews;
     }
 
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "restaurantId=" + restaurantId +
-                ", restaurantName='" + restaurantName + '\'' +
-                ", restaurantAddress='" + restaurantAddress + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", website='" + website + '\'' +
-                ", businessHours='" + businessHours + '\'' +
-                '}';
+    public Set<ApiLink> getApiLinks() {
+        return apiLinks;
     }
 
+    public void setApiLinks(Set<ApiLink> apiLinks) {
+        this.apiLinks = apiLinks;
+    }
 
 }

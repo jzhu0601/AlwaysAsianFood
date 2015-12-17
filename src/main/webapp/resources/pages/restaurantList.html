@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">Restaurant List</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Restaurant</td>
+                <td>Address</td>
+                <td>Phone Number</td>
+                <td>Website</td>
+                <td>Business Hours</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="restaurant in restaurants">
+                <td>{{restaurant.restaurantName}}</td>
+                <td>{{restaurant.restaurantAddress}}</td>
+                <td>{{restaurant.phoneNum}}</td>
+                <td>{{restaurant.website}}</td>
+                <td>{{restaurant.businessHours}}</td>
+                <td>
+                    <a ng-href="/#/restaurant/rate/{{restaurant.restaurantId}}" class="btn btn-primary">Rate</a>
+                </td>
+                <td>
+                    <a ng-href="/#/restaurantList/editRestaurant/{{restaurant.restaurantId}}" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 package com.mycompany.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,6 +14,7 @@ public class ApiLink implements Serializable {
 
     @Id
     @Column(name = "api_id")
+    @GeneratedValue
     private Integer apiId;
 
     @Column(name = "service_id")
@@ -20,8 +23,20 @@ public class ApiLink implements Serializable {
     @Column(name = "service_name")
     private String serviceName;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value="api")
     private Restaurant restaurant;
+
+    @Transient
+    private Integer restaurantId;
+
+    public Integer getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Integer restaurantId) {
+        this.restaurantId = restaurantId;
+    }
 
     public Restaurant getRestaurant() {
         return restaurant;
@@ -55,12 +70,4 @@ public class ApiLink implements Serializable {
         this.serviceName = serviceName;
     }
 
-    @Override
-    public String toString() {
-        return "ApiLink{" +
-                "apiId=" + apiId +
-                ", serivceId=" + serivceId +
-                ", serviceName='" + serviceName + '\'' +
-                '}';
-    }
 }

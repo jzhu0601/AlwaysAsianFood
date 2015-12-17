@@ -1,0 +1,48 @@
+<div>
+    <div style="padding: 0px 0px 20px 30px">
+        <form class="form-horizontal" name="searchRestaruantForm" ng-show="boolValue">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Search Restaurant:</label>
+
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="term"
+                           ng-model="term" placeholder="Type restaurant name here"/>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="location"
+                           ng-model="location" placeholder="Type location here"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-2">
+                            <span><button class="btn btn-primary" style="width:80px;margin-right:10px" ng-click="submitSearch()">Search
+                            </button></span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel panel-primary" ng-hide="boolValue">
+        <div class="panel-heading" style="font-size:large">Result</div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>Address</td>
+                    <td>Phone Number</td>
+                    <td>Website</td>
+                    <td>Currently Closed?</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{response.location.display_address}}</td>
+                    <td>{{response.display_phone}}</td>
+                    <td>{{response.url}}</td>
+                    <td>{{response.is_closed}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

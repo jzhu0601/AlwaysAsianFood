@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Always Asian Food</title>
+
+    <!--css library-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/css/star-rating.min.css"/>
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="resources/css/app.css"/>
+
+</head>
+
+
+<body ng-app="asianFoodApp">
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <a class="navbar-brand" data-ui-sref="home">Always Asian Food</a>
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ng-href="/#/">Home</a></li>
+                <li><a ng-href="/#/restaurantList">Restaurant List</a></li>
+                <li><a ng-href="/#/addRestaurant"><i class="glyphicon glyphicon-plus"></i>AddRestaurant</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div ng-view></div>
+</div>
+
+<!--JS Library-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+<script src="resources/js/star-rating.min.js"></script>
+
+<!--Custom JS -->
+<script src="resources/js/app.js"></script>
+<script src="resources/js/controllers.js"></script>
+
+</body>
+</html>	
