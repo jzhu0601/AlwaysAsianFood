@@ -11,21 +11,38 @@
         $scope.boolValue = true;
         $scope.term = "";
         $scope.location = "";
+        $scope.image_url = "";
+        $scope.rating_img_url = "";
+        $scope.businessAddress = "";
+        $scope.display_phone = "";
+        $scope.website = "";
         $scope.submitSearch = function () {
             $scope.boolValue = false;
             var data = {
                 term: $scope.term,
                 location: $scope.location
             }; //end data
-            var res = $http.post('/api/yelp/searchRestaurant', data).
-            success(function (responseData) {
-                $scope.businessAddress = responseData.location.display_address.toString();
-                $scope.display_phone = responseData.display_phone;
-                $scope.website = responseData.url;
-                console.log(responseData);
-            }).error(function () {
-            });
+            var res = $http.post('/api/yelp/searchRestaurant', data)
+                .success(function (responseData) {
+                    $scope.image_url = responseData.image_url;
+                    $scope.rating_img_url = responseData.rating_img_url;
+                    $scope.businessAddress = responseData.location.display_address.toString();
+                    $scope.display_phone = responseData.display_phone;
+                    $scope.website = responseData.url;
+                    //console.log(responseData);
+                }).error(function () {
+                });
         }//end submit function
+
+        $scope.returnSearch = function () {
+            $scope.boolValue = true;
+            $scope.image_url = "";
+            $scope.rating_img_url = "";
+            $scope.businessAddress = "";
+            $scope.display_phone = "";
+            $scope.website = "";
+        }//end returnSearch
+
     } //end HomeCtrl
 
     angular

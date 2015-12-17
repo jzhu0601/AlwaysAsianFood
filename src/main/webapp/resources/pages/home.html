@@ -15,7 +15,8 @@
             </div>
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-2">
-                            <span><button class="btn btn-primary" style="width:80px;margin-right:10px" ng-click="submitSearch()">Search
+                            <span><button class="btn btn-primary" style="width:80px;margin-right:10px"
+                                          ng-click="submitSearch()">Search
                             </button></span>
                 </div>
             </div>
@@ -26,21 +27,22 @@
         <div class="panel-heading" style="font-size:large">Result</div>
         <div class="panel-body">
             <table class="table">
-                <thead>
-                <tr>
-                    <td>Address</td>
-                    <td>Phone Number</td>
-                    <td>Website</td>
-                </tr>
-                </thead>
                 <tbody>
                 <tr>
+                    <td><img ng-src="{{image_url}}" ng-show="image_url"></td>
+                    <td><img ng-src="{{rating_img_url}}" ng-show="rating_img_url"></td>
                     <td>{{businessAddress}}</td>
                     <td>{{display_phone}}</td>
                     <td><a ng-href="{{website}}" ng-show="website">Yelp Review Page</a></td>
                 </tr>
                 </tbody>
             </table>
+            <div class="col-md-4 col-md-offset-10">
+                <span><button class="btn btn-primary" style="width:80px;margin-right:10px" ng-click="returnSearch()"
+                              ng-show="website">
+                    Return
+                </button></span>
+            </div>
         </div>
     </div>
 </div>
