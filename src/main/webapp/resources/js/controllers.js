@@ -16,7 +16,7 @@
             var data = {
                 term: $scope.term,
                 location: $scope.location
-            }; //end dat
+            }; //end data
             var res = $http.post('/api/yelp/searchRestaurant', data).
             success(function (responseData) {
                 $scope.response = responseData;

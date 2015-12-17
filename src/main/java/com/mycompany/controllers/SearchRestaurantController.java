@@ -29,14 +29,11 @@ public class SearchRestaurantController {
         String term = (String) jsonObj.get("term");
         String location = (String) jsonObj.get("location");
         return queryYelp(yelpAPI, term, location);
-
     }
-
 
     public static String queryYelp(YelpAPI yelpApi, String term, String location) {
         String searchResponseJSON =
                 yelpApi.searchForBusinessesByLocation(term, location);
-
         JSONParser parser = new JSONParser();
         JSONObject response = null;
         try {
@@ -52,5 +49,4 @@ public class SearchRestaurantController {
         String businessResponseJSON = yelpApi.searchByBusinessId(firstBusinessID.toString());
         return businessResponseJSON;
     }
-
 }

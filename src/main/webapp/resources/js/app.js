@@ -3,7 +3,7 @@
  */
 (function () {
     "use strict";
-    var asianFoodApp = angular.module("asianFoodApp", ['ngRoute']);
+    var asianFoodApp = angular.module("asianFoodApp", ['ngRoute', 'angular-loading-bar']);
 
     asianFoodApp.config(function ($routeProvider) {
         $routeProvider
@@ -33,6 +33,9 @@
             })
 
     });//end config
+
+    asianFoodApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    }]); //end config
 
 })();//end IFFE
 
