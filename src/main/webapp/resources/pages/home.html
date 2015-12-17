@@ -31,15 +31,13 @@
                     <td>Address</td>
                     <td>Phone Number</td>
                     <td>Website</td>
-                    <td>Currently Closed?</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{response.location.display_address}}</td>
-                    <td>{{response.display_phone}}</td>
-                    <td>{{response.url}}</td>
-                    <td>{{response.is_closed}}</td>
+                    <td>{{businessAddress}}</td>
+                    <td>{{display_phone}}</td>
+                    <td><a ng-href="{{website}}" ng-show="website">Yelp Review Page</a></td>
                 </tr>
                 </tbody>
             </table>
