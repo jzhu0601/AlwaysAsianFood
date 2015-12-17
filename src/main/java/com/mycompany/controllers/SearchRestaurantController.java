@@ -21,17 +21,15 @@ public class SearchRestaurantController {
     private static final String CONSUMER_SECRET = "k11Bub9ykmUjfWqbUW93v7blK8c";
     private static final String TOKEN = "9QgcuRVjhHKrs0tOwRZTgFtnjEN1kXsw";
     private static final String TOKEN_SECRET = "slpL_-GYpSAJsR_xHisTqe6Dfg4";
-    //private String response;
     YelpAPI yelpAPI = new YelpAPI(CONSUMER_KEY, CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
 
     @RequestMapping(value = "/api/yelp/searchRestaurant", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String searchRestaurantWithYelp(@RequestBody String jsonData) {
-        String response = "";
         org.json.JSONObject jsonObj = new org.json.JSONObject(jsonData);
         String term = (String) jsonObj.get("term");
         String location = (String) jsonObj.get("location");
-        response = queryYelp(yelpAPI, term, location);
-        return response;
+        return queryYelp(yelpAPI, term, location);
+
     }
 
 
