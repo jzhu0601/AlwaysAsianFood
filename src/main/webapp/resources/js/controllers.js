@@ -29,7 +29,7 @@
                     $scope.businessAddress = responseData.location.display_address.toString();
                     $scope.display_phone = responseData.display_phone;
                     $scope.website = responseData.url;
-                    //console.log(responseData);
+                    console.log(responseData);
                 }).error(function () {
                 });
         }//end submit function
