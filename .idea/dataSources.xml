@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1144377666">
+  <component name="DataSourceManagerImpl" format="xml" hash="124097363">
     <data-source source="LOCAL" name="PostgreSQL - dxiqbwhv@pellefant.db.elephantsql.com" uuid="538696b8-5bbc-413b-baa1-11dfeb133bfc">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
