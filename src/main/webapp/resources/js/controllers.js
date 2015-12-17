@@ -9,18 +9,18 @@
 
     function HomeCtrl($scope, $http) {
         $scope.boolValue = true;
-        $scope.term = "burger king";
-        $scope.location = "columbus";
+        $scope.term = "";
+        $scope.location = "";
         $scope.submitSearch = function () {
             $scope.boolValue = false;
             var data = {
                 term: $scope.term,
                 location: $scope.location
-            }; //end data
-            var res = $http.post('/api/yelp/searchRestaurant', data);
-            $http.get('/api/yelp/searchRestaurantResult').
-            success(function (data) {
-                $scope.response = data;
+            }; //end dat
+            var res = $http.post('/api/yelp/searchRestaurant', data).
+            success(function (responseData) {
+                $scope.response = responseData;
+            }).error(function () {
             });
         }//end submit function
     } //end HomeCtrl
