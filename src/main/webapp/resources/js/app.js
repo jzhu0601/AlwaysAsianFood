@@ -3,7 +3,7 @@
  */
 (function () {
     "use strict";
-    var asianFoodApp = angular.module("asianFoodApp", ['ngRoute', 'angular-loading-bar']);
+    var asianFoodApp = angular.module("asianFoodApp", ['ngRoute', 'angular-loading-bar', 'jp.ng-bs-animated-button']);
 
     asianFoodApp.config(function ($routeProvider) {
         $routeProvider

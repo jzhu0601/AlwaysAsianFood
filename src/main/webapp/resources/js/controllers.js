@@ -7,13 +7,14 @@
         .module("asianFoodApp")
         .controller("homeCtrl", HomeCtrl);
 
-    function HomeCtrl($scope, $http) {
+    function HomeCtrl($scope, $http, $location) {
+
         $scope.boolValue = true;
         $scope.term = "";
         $scope.location = "";
         $scope.image_url = "";
         $scope.rating_img_url = "";
-        $scope.businessAddress = "";
+        $scope.businessAddresses = "";
         $scope.display_phone = "";
         $scope.website = "";
         $scope.submitSearch = function () {
@@ -26,10 +27,11 @@
                 .success(function (responseData) {
                     $scope.image_url = responseData.image_url;
                     $scope.rating_img_url = responseData.rating_img_url;
-                    $scope.businessAddress = responseData.location.display_address.toString();
+                    $scope.businessAddresses = responseData.location.display_address.toString();
                     $scope.display_phone = responseData.display_phone;
                     $scope.website = responseData.url;
-                    console.log(responseData);
+                    $scope.restaurantName = responseData.id;
+                    // console.log(responseData);
                 }).error(function () {
                 });
         }//end submit function
@@ -38,10 +40,29 @@
             $scope.boolValue = true;
             $scope.image_url = "";
             $scope.rating_img_url = "";
-            $scope.businessAddress = "";
+            $scope.businessAddresses = "";
             $scope.display_phone = "";
             $scope.website = "";
         }//end returnSearch
+
+        $scope.rateRestYelp = function () {
+            $http.get('/api/restaurants/' + $scope.restaurantName)
+                .success(function (data) {
+                    if (data.restaurantName === undefined) {
+                        var sendData = {
+                            restaurantName: $scope.restaurantName,
+                            restaurantAddress: $scope.businessAddresses,
+                            phoneNum: $scope.display_phone,
+                            website: $scope.website,
+                            businessHours: null
+                        }; //end sendData
+                        var res = $http.post('/api/restaurants', sendData);
+                    } else {
+                        //go to the rate the already exist restaruant
+                        $location.path('/restaurant/rate/' + data.restaurantId);
+                    }
+                });
+        }//end rateRestYelp
 
     } //end HomeCtrl
 
@@ -111,17 +132,36 @@
         .module("asianFoodApp")
         .controller("rateRestaurantCtrl", RateRestaurantCtrl);
 
-    function RateRestaurantCtrl($scope, $http, $routeParams, $location) {
+    function RateRestaurantCtrl($scope, $http, $routeParams, $location, $timeout) {
+
+        $scope.isSubmitting = null;
+        $scope.result = null;
+
+        $scope.options = {
+            buttonDefaultClass: 'btn-primary',
+            buttonSubmittingClass: 'btn-info',
+            buttonSuccessClass: 'btn-success',
+            buttonSuccessText: 'Review Submitted',
+            buttonErrorText: 'Review cannot be submitted'
+        };
+
+
         var restaurantId = $routeParams.id;
         $scope.rating = "";
         $scope.reviewContent = "";
         $scope.submit = function () {
+            $scope.isSubmitting = true;
             var dataRec = {
                 reviewStar: $scope.rating,
                 reviewContent: $scope.reviewContent,
                 restaurantId: restaurantId
             };//end dataRec
-            var res = $http.post('api/reviews/' + restaurantId, dataRec);
+            var res = $http.post('api/reviews/' + restaurantId, dataRec).success(function () {
+                $scope.result = 'success'
+            }).error(function () {
+                $scope.result = 'error';
+            });
+
         } //end submit
         $scope.cancel = function (path) {
             $location.path('/restaurantList');

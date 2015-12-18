@@ -21,7 +21,7 @@ public class Restaurant implements Serializable {
     @GeneratedValue
     private Integer restaurantId;
 
-    @Column(name = "restaurant_name")
+    @Column(name = "restaurant_name", unique = true)
     private String restaurantName;
 
     @Column(name = "address")

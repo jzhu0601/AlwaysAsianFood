@@ -39,7 +39,6 @@ public class ReviewService {
         return reviewDAO.save(review);
     }
 
-
     public Collection<Review> getReviewsBasedOnCustomerAndRestaurantId(Integer cusId, Integer restId) {
         return reviewDAO.queryByCustomerAndRestaurant(cusId,restId);
     }

@@ -25,13 +25,22 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Restaurant> getRestaurant(@PathVariable("id") Integer restaurantId) {
+//    @RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Restaurant> getRestaurant(@PathVariable("id") Integer restaurantId) {
+//
+//        Restaurant restaurant = restaurantService.findOne(restaurantId);
+//
+//        return new ResponseEntity<>(restaurant, HttpStatus.OK);
+//    }
 
-        Restaurant restaurant = restaurantService.findOne(restaurantId);
+    @RequestMapping(value = "/api/restaurants/{restaurantName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Restaurant> getRestaurantByName(@PathVariable("restaurantName") String restaurantName) {
+
+        Restaurant restaurant = restaurantService.findByName(restaurantName);
 
         return new ResponseEntity<>(restaurant, HttpStatus.OK);
     }
+
 
     @RequestMapping(value = "/api/restaurants", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
@@ -53,5 +62,6 @@ public class RestaurantController {
         restaurantService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
+
+
 }

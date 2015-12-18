@@ -27,7 +27,6 @@ public class RestaurantService {
     }
 
     public Restaurant create(Restaurant restaurant) {
-
         return restaurantDAO.save(restaurant);
     }
 
@@ -49,5 +48,9 @@ public class RestaurantService {
 
     public void delete(Integer id) {
         restaurantDAO.delete(id);
+    }
+
+    public Restaurant findByName(String restaurantName) {
+        return restaurantDAO.findRestaurantByName(restaurantName);
     }
 }

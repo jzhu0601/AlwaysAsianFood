@@ -2,6 +2,8 @@ package com.mycompany.Repositories;
 
 import com.mycompany.entities.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
+    @Query("From Restaurant as r where r.restaurantName = :restaurantName ")
+    Restaurant findRestaurantByName(@Param("restaurantName") String restaurantName);
 }
 
