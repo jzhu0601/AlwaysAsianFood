@@ -162,6 +162,7 @@
                 $scope.result = 'error';
             });
 
+
         } //end submit
         $scope.cancel = function (path) {
             $location.path('/restaurantList');

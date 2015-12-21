@@ -9,33 +9,41 @@
         $routeProvider
             .when('/', {
                 templateUrl: '/resources/pages/home.html',
-                controller: 'homeCtrl'
+                controller: 'homeCtrl',
+                caseInsensitiveMatch: true
             })
 
             .when('/restaurantList', {
                 templateUrl: '/resources/pages/restaurantList.html',
-                controller: 'restaurantCtrl'
+                controller: 'restaurantCtrl',
+                caseInsensitiveMatch: true
             })
 
             .when('/addRestaurant', {
                 templateUrl: '/resources/pages/addRestaurant.html',
-                controller: 'addRestaurantCtrl'
+                controller: 'addRestaurantCtrl',
+                caseInsensitiveMatch: true
             })
 
             .when('/restaurantList/editRestaurant/:id', {
                 templateUrl: '/resources/pages/editRestaurant.html',
-                controller: 'editRestaurantCtrl'
+                controller: 'editRestaurantCtrl',
+                caseInsensitiveMatch: true
             })
 
             .when('/restaurant/rate/:id', {
                 templateUrl: '/resources/pages/rateRestaurant.html',
-                controller: 'rateRestaurantCtrl'
+                controller: 'rateRestaurantCtrl',
+                caseInsensitiveMatch: true
             })
+
+            .otherwise('/');
 
     });//end config
 
     asianFoodApp.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     }]); //end config
+
 
 })();//end IFFE
 
